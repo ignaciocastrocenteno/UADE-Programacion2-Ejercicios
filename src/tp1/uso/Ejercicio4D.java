@@ -18,29 +18,28 @@ public class Ejercicio4D {
             colaB.acolar(15);
             colaB.acolar(86);
             colaB.acolar(160);
+            // colaB.acolar(161); // Probando si el último elementos fuese diferente
 
-        System.out.println("Coincide el ultimo elementos de ambas colas: " + compararUltimoValorDeCola(colaA, colaB));
-
-        // Casuística 2: Las colas tienen últimos elementos que son distintos
-            limpiarCola(colaB);
-            colaB.acolar(1);
-            colaB.acolar(15);
-            colaB.acolar(31);
-            colaB.acolar(160);
+        System.out.println("Coincide el ultimo elemento de ambas colas: " + compararUltimoValorDeCola(colaA, colaB));
     }
 
     private static boolean compararUltimoValorDeCola(ColaTDA colaA, ColaTDA colaB) {
-        boolean resultado = false;
+        int ultimoColaA = 0;
+        int ultimoColaB = 0;
+        // 1-15-31-160
 
-
-
-        return resultado;
-    }
-
-    private static void limpiarCola(ColaTDA colaLimpiar) {
-        while(!colaLimpiar.colaVacia()) {
-            colaLimpiar.desacolar();
+        // Recorrer la colaA hasta encontrar el último elemento
+        while(!colaA.colaVacia()){
+            ultimoColaA = colaA.primero();
+            colaA.desacolar();
         }
-        System.out.println("Cola vaciada!");
+
+        // Recorrer la colaB hasta encontrar el último elemento
+        while(!colaB.colaVacia()){
+            ultimoColaB = colaB.primero();
+            colaB.desacolar();
+        }
+
+        return ultimoColaA == ultimoColaB;
     }
 }
